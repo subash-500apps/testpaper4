@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+    <p>Inserting element</p> 
+    <body style="text-align: center;">
+      
+        arr = [1,2,3,6,7,8,9,10]
+        <br/>
+     
+        <input name="submit" placeholder="enter number">
+        <br/>
+        <button type="text" onclick="Add()" name="add">Add</button>
+       <br/>
+<p id="demo"></p>
+    <script>
+        function Add()
+        {
+        let arr = [1,2,3,6,7,8,9,10];
+       arr.splice(3,0,"4","5");
+       document.getElementById("demo").innerHTML=arr;
+        }
+    </script>
+</body>
+ 
+</html>

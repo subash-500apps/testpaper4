@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ques 9</title>
+</head>
+<body>
+ <p>Session storage</p>
+
+ Session Storage objects can be accessed using the sessionStorage read-only property. The difference between sessionStorage and localStorage is that localStorage data does not expire, whereas sessionStorage data is cleared when the page session ends.
+
+A unique page session gets created once a document is loaded in a browser tab. Page sessions are valid for only one tab at a time. Pages are only saved for the amount of time that the tab or the browser is open; they do not persist after the page reloads and restores. A new session is created each time a tab or window is opened; this is different from session cookies.
+ Session Storage has 4 methods:
+
+ setItem() Method – This method takes two parameters one is key and another one is value. It is used to store the value in a particular location with the name of the key.
+ sessionStorage.setItem(key, value)
+ getItem() Method – This method takes one parameter that is key which is used to get the value stored with a particular key name.
+ sessionStorage.getItem(key)
+ removeItem() Method – This is method is used to remove the value stored in the memory in reference to key.
+ sessionStorage.removeItem(key)
+ clear() Method – This method is used to clear all the values stored in the session storage
+ sessionStorage.clear()
+<p>Cookie</p>
+ Cookie: The term “cookie” refers to just the textual information about a website. In order to recognize you and show you results according to your preferences, this website saves some information in your local system when you visit a particular website. The history of the internet has long been marked by the use of cookies.
+  A website visitor asks the server for a web page when they visit it. Every request for a server is unique. Likewise, if you visit a hundred times, each request will be considered unique by the server. Since a server receives many requests every second, storing every user’s information on a server doesn’t seem logical and obvious. 
+  The same information may not be needed again if you don’t return. Therefore, a cookie is sent and stored on your local machine to uniquely identify you. You will receive a response from the same server the next time you hit it since it recognizes you. Almost every server uses this cookie (some exceptions exist today because of advertisements). Therefore, although you might have many cookies in your system, such cookies will be recognized by a server and analyzed.
+
+<br></br>
+  <p>Local storage</p>
+Local Storage: This read-only interface property provides access to the Document’s local storage object, the stored data is stored across browser sessions. Similar to sessionStorage, except that localStorage data gets cleared when the page session ends
+ – that is when the page is closed.
+  It is cleared when the last “private” tab of a browser is closed (localStorage data for a document loaded in a private browsing or incognito session).
+
+  Local storage has 4 methods:
+
+  setItem() Method – This method takes two parameters one is key and another one is value. It is used to store the value in a particular location with the name of the key.
+  localStorage.setItem(key, value)
+  getItem() Method – This method takes one parameter that is key which is used to get the value stored with a particular key name.
+  localStorage.getItem(key)
+  removeItem() Method – This is method is used to remove the value stored in the memory in reference to key.
+  localStorage.removeItem(key)
+  clear() Method – This method is used to clear all the values stored in localstorage.
+  localStorage.clear()
+</body>
+</html>
