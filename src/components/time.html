@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+</head>
+<body>
+    <h1>Time function</h1>
+    <body style="text-align: center; background-color: rgb(42, 165, 58); box-shadow: 0cm;">
+    <p id="demo"></p>
+    
+    <script>
+
+
+var intervalID = setInterval(clearTimeout(), 5000); 
+
+setTimeout( clearTimeout(),5000); 
+setInterval(function(){
+const d= new Date();
+document.getElementById("demo").innerHTML=d.toLocaleTimeString();
+
+}, 2000);
+
+
+  </script>
+</body>
+</html>
