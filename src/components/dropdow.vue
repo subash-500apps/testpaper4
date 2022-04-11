@@ -2,7 +2,7 @@
 
 <div>
 
-<h1>Country details</h1>
+<h1>Country detail</h1>
 
 <b-form-select v-model="value" :options="countries"></b-form-select>
 
