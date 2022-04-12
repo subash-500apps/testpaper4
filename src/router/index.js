@@ -26,7 +26,7 @@ import volly from '../components/crudd'
 import Solly from '../components/domain'
 import Golly from  '../components/dropdow'
 import toff from  '../components/newfile'
-import buff from  '../components/workout'
+ import buff from  '../components/workout'
 
 
 

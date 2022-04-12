@@ -1,82 +1,105 @@
 <template>
-  <div>
-    <vue-filter-control @filter-changed="refreshData" :columns="columns" :active-filters="myFilters"
-      :opt-groups="optGroups">
-    </vue-filter-control>
-  </div>
 
+  <div>
+    <nav v-if="show">
+      <ul class="pagination">
+        <li :class="{ disabled: !prev }" v-on:click="go(prev)"><span>&laquo;</span></li>
+        <li v-for="link in links" track-by="$index" :class="{ active: current == link, disabled: isNaN(link) }"
+          v-on:click="go(link)"><span>{{ link }}</span></li>
+        <li :class="{ disabled: !next }" v-on:click="go(next)"><span>&raquo;</span></li>
+      </ul>
+    </nav>
+  </div>
 
 </template>
 <script>
 
-export default{
-
-  name:'worK'
-}
-
-
-
-var Vue = require('vue');
-import VueFilterControl from 'vue-filter-control'
-Vue.component('vue-filter-control', VueFilterControl)
-
-var vm = new vm({
-  el: '#some-div-id',
-  data: {
-    columns: [
-      {
-        name: 'first_name',
-        displayName: 'First Name',
-        dataType: 'string'
-      }, {
-        name: 'languages_spoken',
-        displayName: 'Languages Spoken Fluently',
-        dataType: 'choice',
-        options: [
-          { key: 'en', value: 'English' },
-          { key: 'fr', value: 'French' },
-          { key: 'pt', value: 'Portuguese' },
-          { key: 'es', value: 'Spanish' }
-          // ...more languages
-        ],
-        maxItems: 10,
-        optGroup: 'group1'
+Vue.component('pagination', {
+  template: '#pagination',
+  props: {
+    total: {
+      type: Number,
+      default: 0
+    },
+    current: {
+      type: Number,
+      default: 1
+    },
+    limit: {
+      type: Number,
+      default: 4,
+      coerce: function (limit) {
+        return limit - 1;
       }
-    ],
-    myFilters: [
-      { column: 'first_name', operator: '=', value: 'Frank' },
-      { column: 'languages_spoken', operator: 'in', value: 'en,fr' }
-    ],
-    optGroups: [
-      { value: 'group1', label: 'Group One' },
-      { value: 'group2', label: 'Group Two' }
-    ]
+    }
   },
+  data: function () {
+    return {
+      show: false
+    };
+  },
+  computed: {
+    pages: function () {
+      var pages = [];
 
+      for (var i = 1; i <= this.total; i++) {
+        pages.push(i);
+      }
+
+      return pages;
+    },
+    links: function () {
+      var first = [1, '...'],
+        last = ['...', this.total],
+        range = [];
+
+      if (this.current <= this.limit) {
+        range = this.range(1, this.limit + 1);
+
+        return (this.current + range.length) <= this.total ? range.concat(last) : range;
+      } else if (this.current > (this.total - this.limit)) {
+        range = this.range(this.total - (this.limit), this.total);
+
+        return (this.current - range.length) >= 1 ? first.concat(range) : range;
+      } else {
+        range = this.range(this.current - Math.ceil(this.limit / 2), this.current + Math.ceil(this.limit / 2));
+
+        return first.concat(range).concat(last);
+      }
+    },
+    next: function () {
+      var next = this.current + 1;
+
+      return next <= this.total ? next : false;
+    },
+    prev: function () {
+      return this.current - 1;
+    },
+    show: function () {
+      return this.next || this.prev;
+    }
+  },
   methods: {
+    range: function (start, end) {
+      var pages = [];
 
-    refreshData(activeFilters) {
-     
+      for (var i = start - 1; i < end; i++) {
+        if (this.pages[i]) {
+          pages.push(this.pages[i]);
+        }
+      }
+
+      return pages;
+    },
+    go: function (page) {
+      if (isNaN(page)) {
+        return;
+      }
+
+      this.$dispatch('paginate:to', page);
     }
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
