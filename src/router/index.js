@@ -26,6 +26,7 @@ import volly from '../components/crudd'
 import Solly from '../components/domain'
 import Golly from  '../components/dropdow'
 
+
 Vue.use(Router)
 
 const routes = [
@@ -156,7 +157,6 @@ component:Golly
 
 }
 
-,
 
 ]
 

@@ -1,3 +1,9 @@
+
+export default{
+
+    name:'promisE'
+}
+
 const cheerio = require('cheerio');
 const rp = require('request-promise');
 
@@ -18,7 +24,7 @@ rp(url).then(html => {
     for(let i = 0; i < total; i++){
         links.push({
             href: linkObjects[i].attribs.href,
-            title: linkObjects[i].attribs.title
+            title: linkObjects[i].attribs.name
         });
     }
 
