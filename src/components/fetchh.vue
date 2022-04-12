@@ -1,87 +1,54 @@
 <template>
+  <div>
+    <p>Fetchingdata</p>
 
-<div>
-
-<b-form @submit.prevent="getData()">
-
-<b-form-input v-model="value" placeholder="enter your country" required></b-form-input><br><br>
-
-<b-button type="submit" @click="getData()" variant="primary">submit</b-button>
-
-</b-form>
-
-
-
-<b-card
->
-<b-table striped hover :items="posts" :fields="fields.name"></b-table>
-
-  <b-container class="bv-example-row">
-  <b-row>
-    <b-col v-for ="field in posts" :key="field.name">  {{field}}</b-col>
-    <b-col  v-for ="field in posts" :key="field.domains"> {{field}}</b-col>
-  
-  </b-row>
-</b-container>
-</b-card>
-
-
-
-
-
-</div>
-
+    <table border="1px">
+      <tr>
+        <td>Country</td>
+        <td>Name</td>
+        <td>Domains</td>
+          <td>website</td>
+      </tr>
+      <tr v-for="item in list" v-bind:key="item.id">
+        <td>{{ item.country }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.domains}}</td>
+           <td>{{ item.web_pages}}</td>
+      </tr>
+    </table>
+    <button @click="redirect()">click</button>
+  </div>
 </template>
 
-<script>
-
-//var axios = require("axios").default;
-
+    <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
 export default {
-
-name:"quesSA",
-
-data() {
-
-return {
-
-posts:' ',
-
-fields:["web_pages","alpha_two_code","country","name","domains","state-province"],
-
-}
-
-},
-
-methods: {
-
-async getData() {
-
-try {
-
-let response = await fetch("http://universities.hipolabs.com/search?country="+this.value);
-
-this.posts = await response.json();
-console.log(this.posts)
-
-} catch (error) {
-
-console.log(error);
-
-}
-
-},
-
-},
-
-
-
-created() {
-
-this.getData();
-
-},
-
-}
-
+  name: "employeeList",
+  data() {
+    return { list: undefined };
+  },
+  mounted() {
+    Vue.axios
+      .get("http://universities.hipolabs.com/search?")
+       //.get("http://dummy.restapiexample.com/api/v1/employees")
+      .then((resp) => {
+        this.list = resp.data;
+        console.log(resp.data);
+      });
+  },
+  methods:{
+    redirect()
+    {
+      Vue.axios
+      .get("http://localhost:8080/#/call")
+      .then((resp) => {
+        this.list = resp.data;
+        document.write(resp.data);
+      });
+    }
+  }
+};
 </script>

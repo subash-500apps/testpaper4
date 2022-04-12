@@ -1,35 +1,30 @@
 <template>
 
-<div>
+  <div>
 
-<b-form @submit.prevent="getData()">
+    <b-form @submit.prevent="getData()">
 
-<b-form-input v-model="value" placeholder="enter your country" required></b-form-input><br><br>
+      <b-form-input v-model="value" placeholder="enter your country" required></b-form-input><br><br>
 
-<b-button type="submit" @click="getData()" variant="primary">submit</b-button>
+      <b-button type="submit" @click="getData()" variant="primary">submit</b-button>
 
-</b-form>
-
-
-
-<b-card
->
-<b-table striped hover :items="posts" :fields="fields.name"></b-table>
-
-  <b-container class="bv-example-row">
-  <b-row>
-    <b-col v-for ="field in posts" :key="field.name">  {{field}}</b-col>
-    <b-col  v-for ="field in posts" :key="field.domains"> {{field}}</b-col>
-  
-  </b-row>
-</b-container>
-</b-card>
+    </b-form>
 
 
 
+    <b-card>
+      <b-table striped hover :items="posts" :fields="fields.name"></b-table>
 
+      <b-container class="bv-example-row">
+        <b-row>
+          <b-col v-for="field in posts" :key="field.name"> {{ field }}</b-col>
+          <b-col v-for="field in posts" :key="field.domains"> {{ field }}</b-col>
 
-</div>
+        </b-row>
+      </b-container>
+    </b-card>
+
+  </div>
 
 </template>
 
@@ -39,48 +34,48 @@
 
 export default {
 
-name:"quesSA",
+  name: "quesSA",
 
-data() {
+  data() {
 
-return {
+    return {
 
-posts:' ',
+      posts: ' ',
 
-fields:["web_pages","alpha_two_code","country","name","domains","state-province"],
+      fields: ["web_pages", "alpha_two_code", "country", "name", "domains", "state-province"],
 
-}
+    }
 
-},
+  },
 
-methods: {
+  methods: {
 
-async getData() {
+    async getData() {
 
-try {
+      try {
 
-let response = await fetch("http://universities.hipolabs.com/search?country="+this.value);
+        let response = await fetch("http://universities.hipolabs.com/search?country=" + this.value);
 
-this.posts = await response.json();
-console.log(this.posts)
+        this.posts = await response.json();
+        console.log(this.posts)
 
-} catch (error) {
+      } catch (error) {
 
-console.log(error);
+        console.log(error);
 
-}
+      }
 
-},
+    },
 
-},
+  },
 
 
 
-created() {
+  created() {
 
-this.getData();
+    this.getData();
 
-},
+  },
 
 }
 

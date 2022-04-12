@@ -25,7 +25,8 @@ import dolly from '../components/alphabet'
 import volly from '../components/crudd'
 import Solly from '../components/domain'
 import Golly from  '../components/dropdow'
-import jerry from '../components/promise'
+import toff from  '../components/newfile'
+
 
 
 Vue.use(Router)
@@ -156,14 +157,13 @@ name:'QueS6',
 
 component:Golly
 
-}
-,
+},
 {
-    path:'/qualify',
+    path:'/today',
 
-name:'promisE',
+name:'dolI',
 
-component:jerry
+component:toff
 
 }
 
