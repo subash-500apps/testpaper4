@@ -1,9 +1,5 @@
 
 
-export default{
-
-    name:'promisE'
-}
 
 const cheerio = require('cheerio');
 const rp = require('request-promise');
