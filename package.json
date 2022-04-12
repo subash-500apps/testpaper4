@@ -22,6 +22,7 @@
     "url": "^0.11.0",
     "util": "^0.12.4",
     "vue": "^2.6.14",
+    "vue-filter-control": "^2.0.2",
     "vue-react": "^1.2.0",
     "vue-router": "3.0.1",
     "webpack": "^5.72.0"
