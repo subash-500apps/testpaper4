@@ -29,7 +29,7 @@ rp(url).then(html => {
     }
 
     console.log(links);
-    // do something else here with links
+    
 })
 .catch(err => {
     console.log(err); 
