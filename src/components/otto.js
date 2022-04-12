@@ -28,7 +28,7 @@ const extractLinks = async (url) => {
     document.write(links);
     // do something else here with these links, such as writing to a file or saving them to your database
   } catch (error) {
-    console.log(error.response.body);
+    console.log(error.response.error);
   }
 };
 

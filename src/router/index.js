@@ -25,7 +25,7 @@ import dolly from '../components/alphabet'
 import volly from '../components/crudd'
 import Solly from '../components/domain'
 import Golly from  '../components/dropdow'
-import otto from '../components/otto'
+
 Vue.use(Router)
 
 const routes = [
@@ -157,15 +157,6 @@ component:Golly
 }
 
 ,
-{
-    path:'/ctrl',
-
-
-
-component:otto
-
-}
-
 
 ]
 
