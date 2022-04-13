@@ -1,35 +1,148 @@
-
-
 <template>
-    <div class="card text-center m-3">
-        <h3 class="card-header">pagination</h3>
-        <div class="card-body">
-            <div v-for="item in pageOfItems"  :key="item.id">{{item.name}}</div>
-        </div>
-        <div class="card-footer pb-0 pt-3">
-            <jw-pagination :pageSize=20 :items="exampleItems" @changePage="onChangePage"></jw-pagination>
-        </div>
-    </div>
+
+<div class="overflow-auto">
+
+<b-form-input v-model="value"
+
+placeholder="enter your country"
+
+required
+
+></b-form-input><br /><br />
+
+<button @click="getData()">submit</button>
+
+<b-pagination
+
+v-model="currentPage"
+
+:total-rows="rows"
+
+:per-page="perPage"
+
+aria-controls="my-table"
+
+></b-pagination>
+
+<p class="mt-3">Current Page: {{ currentPage }}</p>
+
+<b-table
+
+id="my-table"
+
+:items="posts"
+
+:per-page="perPage"
+
+:current-page="currentPage"
+
+medium
+
+:fields="fields"
+
+></b-table>
+
+
+<!-- <b-container class="bv-example-row">
+  <b-row>
+    <b-col :items="posts">1 </b-col>
+    <b-col :per-page="perPage">2 </b-col>
+  
+    <b-col :fields="fields"> 3</b-col>
+    
+  </b-row>
+</b-container> -->
+
+
+
+
+
+
+
+
+</div>
+
 </template>
- 
+
+
 <script>
-// an example array of items to be paged
-const exampleItems = [...Array(150).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
- 
+
 export default {
-    name:"worK",
-    data() {
-        return {
-           exampleItems,
-           pageOfItems: []
-        };
-    },
-    methods: {
-        onChangePage(pageOfItems) {
-            console.log(pageOfItems)
-            // update page of items
-            this.pageOfItems = pageOfItems;
-        }
-    }
-};
+
+name:'worK',
+
+data() {
+
+return {
+
+perPage: 50,
+
+currentPage: 1,
+
+posts: " ",
+
+fields: [
+
+"web_pages",
+
+"alpha_two_code",
+
+"country",
+
+"name",
+
+"domains",
+
+"state-province",
+
+],
+
+}
+
+},
+
+methods: {
+
+async getData() {
+
+try {
+
+let response = await fetch(
+
+"http://universities.hipolabs.com/search?country=" + this.value
+
+);
+
+this.posts = await response.json();
+
+} catch (error) {
+
+console.log(error);
+
+}
+
+},
+
+},
+
+created()
+
+{
+
+this.getData();
+
+},
+
+computed: {
+
+rows() {
+
+return this.posts.length
+
+}
+
+}
+
+}
+
 </script>

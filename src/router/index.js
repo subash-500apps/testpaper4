@@ -27,6 +27,8 @@ import Solly from '../components/domain'
 import Golly from  '../components/dropdow'
 import toff from  '../components/newfile'
  import buff from  '../components/workouT'
+ import fort from '../components/filter'
+ import lort from '../components/Kanban'
 
 
  
@@ -187,6 +189,26 @@ name:'worK',
 component:buff
 
 }
+,{
+    path:'/filterr',
+
+name:'fillT',
+
+component:fort
+
+}
+,{
+    path:'/kanban',
+
+name:'QuE1',
+
+component:lort
+
+}
+
+
+
+
 ]
 
 
