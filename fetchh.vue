@@ -9,6 +9,8 @@
         <td>Domains</td>
           <td>website</td>
       </tr>
+ <jw-pagination :pageSize=20 :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+
       <tr v-for="item in list" v-bind:key="item.id">
         <td>{{ item.country }}</td>
         <td>{{ item.name }}</td>
@@ -25,25 +27,21 @@ import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
-
 export default {
   name: "employeeList",
   data() {
     return { list: undefined };
   },
   mounted() {
-
     Vue.axios
       .get("http://universities.hipolabs.com/search?")
        //.get("http://dummy.restapiexample.com/api/v1/employees")
-
       .then((resp) => {
         this.list = resp.data;
         console.log(resp.data);
       });
   },
   methods:{
-
     redirect()
     {
       Vue.axios
@@ -52,12 +50,7 @@ export default {
         this.list = resp.data;
         document.write(resp.data);
       });
-
     }
   }
 };
-
-
-
-
 </script>
