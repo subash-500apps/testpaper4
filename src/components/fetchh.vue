@@ -9,6 +9,8 @@
         <td>Domains</td>
           <td>website</td>
       </tr>
+ <jw-pagination :pageSize=20 :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+
       <tr v-for="item in list" v-bind:key="item.id">
         <td>{{ item.country }}</td>
         <td>{{ item.name }}</td>
