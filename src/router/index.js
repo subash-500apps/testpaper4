@@ -26,8 +26,20 @@ import volly from '../components/crudd'
 import Solly from '../components/domain'
 import Golly from  '../components/dropdow'
 import toff from  '../components/newfile'
- import buff from  '../components/workout'
+ import buff from  '../components/workouT'
 
+
+ 
+import App from '/home/agile/Desktop/router1/src/App.vue'
+ 
+// make jw pagination component available in application
+import JwPagination from 'jw-vue-pagination';
+Vue.component('jw-pagination', JwPagination);
+ 
+new Vue({
+    el: "#app",
+    render: h => h(App)
+});
 
 
 Vue.use(Router)
