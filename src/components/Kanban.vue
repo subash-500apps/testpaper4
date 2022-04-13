@@ -8,12 +8,12 @@
 
             <b-form-select v-model="value" :options="countries"></b-form-select><br>
 
-            <b-button variant="primary" @click="getData" id="sample">Search</b-button>
+            <b-button variant="primary" @click.prevent="getData" id="sample">Search</b-button>
 
             <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="my-table">
             </b-pagination>
 
-            <b-row cols-md="7">
+            <b-row cols-md="5">
 
                 <b-table id="my-table" :per-page="perPage" :current-page="currentPage" striped hover :items="items">
 
@@ -60,7 +60,7 @@
 
                                     <p>domains: {{ value.domains }}</p>
 
-                                    <p @click="redirect(value.website_url)">
+                                    <p @click.prevent="redirect(value.website_url)">
 
                                         website_url: {{ value.website_url }}</p>
 
@@ -146,23 +146,7 @@ export default {
 
             countries: [],
 
-            // newtask:"",
-
-            // arrBacklog:[{name:"code signup Page"},
-
-            // {name:"Test Dashboard"},
-
-            // {name:"style registration"},
-
-            // {name:"Help with Desk"}, ],
-
-            // arrInprogress:[],
-
-            // arrTested:[],
-
-            // arrDone:[],
-
-        };
+                   };
 
     },
 
@@ -182,8 +166,8 @@ export default {
 
         });
 
-        //if (this.countries.length) this.value = this.countries[0].text;
-
+      
+      
     },
 
     methods: {
@@ -228,17 +212,7 @@ export default {
 
         },
 
-        // add(){
-
-        // if(this.newtask){
-
-        // this.arrBacklog.push({name: this.newtask});
-
-        // this.newtask=""
-
-        // }
-
-        // }
+        
 
     },
 
@@ -260,7 +234,7 @@ export default {
 <style scoped>
 .kanban-column {
 
-    min-height: 300px;
+    min-height: 200px;
 
 }
 </style>
