@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+ 
+
+  <title>Assesment</title>
+
+</head>
+
+<body>
+
+  <p1>
+
+    Question 1: What is the output of below function calls. Give detailed explanation on what you understood.
+
+
+const circle = {
+
+radius: 20,
+
+diameter() {
+
+  return this.radius * 2;
+
+},
+
+perimeter: () => 2 * Math.PI * this.radius,
+
+};
+
+
+ANSWER: Undefined
+
+Reason: This is a scope issue - the radius variable is not available inside the perimeter method and so is undefined. if we Change the
+
+        function to a regular method then the function works as normal.
+
+
+  </p1>
+<br/>
+<br/>
+  <p2>
+
+
+    Question 2: How can you double elements of an array using reduce? Please note that you cannot create additional variables.
+
+
+  ANSWER: lets say I have array of elements as input. I need to double the value of array elements.Using reduce we can
+
+           double the variable like this.
+
+ 
+
+  Eg:  var a = [1,2,3,4,5];
+
+  var c = a.reduce( (acc,b) => {
+
+             acc =b*2;
+
+             console.log(acc);
+
+             return acc
+
+           },[]);
+
+
+           OP:[2,4,6,8,10];
+
+  </p2>
+<br/>
+<br/>
+<p3>
+
+
+
+
+   ANSWER: We can use default method called filter to get the unique values of the items in an array
+
+
+   Eg:  let a = ["1", "1", "2", "3", "3", "1"];
+
+        let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
+
+        console.log(unique);
+
+
+        OP:  [
+
+               "1",
+
+               "2",
+
+               "3"
+
+              ]
+
+
+</p3>
+
+<br/>
+<br/>
+<p4>
+
+
+     Question 4: Write a JavaScript function to check whether an input is an array or not.
+
+
+     Test Data :
+
+     console.log(is_array('w3resource'));
+
+     console.log(is_array([1, 2, 4, 0]));
+
+     false
+
+     true
+
+
+     <html>
+
+      <head>
+
+        <meta charset="utf-8">
+
+        <title>JS Bin</title>
+
+        </head>
+
+      //JAVASCRIPT
+
+      <script>
+
+      var is_array = function(input) {
+
+          if (toString.call(input) === "[object Array]")
+
+            return true;
+
+          return false;  
+
+            };
+
+        console.log(is_array('w3resource'));
+
+        console.log(is_array([1, 2, 4, 0]));
+
+        </script>
+
+        </body>
+
+
+     </html>
+
+     
+
+     OUTPUT: false
+
+             true
+
+
+
+</p4>
+</br>
+<br/>
+<p5>
+
+     Q5: Write a simple JavaScript program to join all elements of the following array into a string.
+
+
+         Sample array : myColor = ["Red", "Green", "White", "Black"];
+
+         Expected Output :
+
+        "Red,Green,White,Black"
+
+        "Red Green White Black"
+
+        "Red+Green+White+Black"
+
+
+        ANSWER:
+
+          <html>
+
+          <head>
+
+          <meta charset=utf-8 />
+
+          <title>JavaScript Array Join</title>
+
+          </head>
+
+          <body>
+
+              <script>
+
+               myColor = ["Red", "Green", "White", "Black"];
+
+               console.log(myColor.toString());
+
+               console.log(myColor.join());
+
+               console.log(myColor.join('+'));
+
+              </script>
+
+          </body>
+
+          </html>
+
+         
+
+        OUTPUT:
+
+        "Red,Green,White,Black"
+
+        "Red Green White Black"
+
+        "Red+Green+White+Black"  
+
+
+
+</p5>
+<br/>
+<br/>
+<p6>
+
+        Question 6: Write a JavaScript program to find the most frequent item of an array.
+
+        Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+        Sample Output : a ( 5 times )
+
+
+        ANSWER: 
+                  <html>
+                    <head>
+
+
+                        <body>
+
+                         <script>
+
+
+                        var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+                        var mf = 1;
+                        var m = 0;
+                        var item;
+                        for (var i=0; i<arr1.length; i++)
+{
+        for (var j=i; j<arr1.length; j++)
+        {
+                if (arr1[i] == arr1[j])
+                 m++;
+                if (mf<m)
+                {
+                  mf=m; 
+                  item = arr1[i];
+                }
+        }
+        m=0;
+}
+                        console.log(item+" ( " +mf +" times ) ") ;
+                        </script>
+
+                        </body>
+                        </head>
+
+                        </html>
+
+                        </p6>
+
+                        </body>
+
+                        </html>
+
+                        OUTPUT: a-5times
+
+
+                    </p6>
+                    <br/><br/>
+                    <p7>
+                        Question 7: Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity)
+                        
+                        ANSWER:
+
+                        <html>
+                            <head>
+                                <body>
+                                    <script>
+                                             
+                         function removeDuplicates(num) {
+                            var x,
+                                len=num.length,
+                                out=[],
+                                obj={};
+                           
+                            for (x=0; x<len; x++) {
+                              obj[num[x]]=0;
+                            }
+                            for (x in obj) {
+                              out.push(x);
+                            }
+                            return out;
+                          }
+                          var Mynum = [1, 2, 2, 4, 5, 4, 7, 8, 7, 3, 6];
+                          result = removeDuplicates(Mynum);
+                          console.log(Mynum);
+                          console.log(result);
+                                     </script>
+                                </body></head>
+                        </html>
+
+                        OUTPUT:
+                        [1,2,2,4,5,4,7,8,7,3,6]
+                        ["1","2","3","4","5","6","7","8"]
+
+                    </p7>
+                    <br/><br/>
+                    <p8>
+ 
+                        Question 8: We have the following arrays: color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+                        
+                                                                         o = ["th","st","nd","rd"]. 
+                                                        Write a JavaScript program to display the colors in the following way : 
+
+                                                        "1st choice is Blue ."
+                                                        "2nd choice is Green."
+                                                        "3rd choice is Red."
+
+                        ANSWER:
+                        <html>
+                        <head>
+                        <meta charset=utf-8 />
+                        <title>Display colors using ordinal numbers</title>
+                        </head>
+                      <body> 
+
+                      <script>
+
+                      var color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+
+                      function Ordinal(n)
+                           {
+                       var o = ["th","st","nd","rd"],
+                       x = n%100;
+                       return x+(o[(x-20)%10]||o[x]||o[0]);
+                       }
+
+                       for(n = 0; n < color.length; n++){
+                       var ordinal = n + 1;
+
+                       var output = (Ordinal(ordinal) + " choice is " + color[n] + ".");
+
+                       console.log(output);
+}
+    </script>
+</body>
+</html>
+
+
+
+
+                    </p8>
+
